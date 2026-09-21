@@ -1,3 +1,4 @@
+import { LikeButton } from "@/features/likes/components/LikeButton";
 import type { Profile } from "@/features/profiles/types";
 
 type ProfileCardProps = {
@@ -13,9 +14,12 @@ export function ProfileCard({ profile }: ProfileCardProps) {
         alt={profile.name}
         className="h-48 w-full rounded-md object-cover"
       />
-      <h2 className="mt-2 text-lg font-bold">
-        {profile.name}（{profile.age}）
-      </h2>
+      <div className="mt-2 flex items-center justify-between">
+        <h2 className="text-lg font-bold">
+          {profile.name}（{profile.age}）
+        </h2>
+        <LikeButton profileId={profile.id} />
+      </div>
       <p className="text-sm text-gray-500">{profile.location}</p>
       <p className="mt-2 text-sm">{profile.bio}</p>
       <ul className="mt-2 flex flex-wrap gap-2">
