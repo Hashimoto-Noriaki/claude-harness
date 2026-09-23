@@ -1,6 +1,6 @@
 # 機能実装状況
 
-最終更新: 2026-06-07
+最終更新: 2026-09-24
 
 ## 凡例
 
@@ -84,6 +84,6 @@
 | ------------- | ------- | ------------------------- |
 | `useAuth`     | ✅ Done | `useAuth.test.ts`         |
 | `ProfileCard` | ✅ Done | `ProfileCard.test.tsx`    |
-| `useLikes`    | 📋 Todo | テストなし                |
+| `useLikes`    | ✅ Done | `useLikes.test.ts`        |
 | `useStocks`   | 📋 Todo | テストなし                |
 | E2E           | 📋 Todo | `e2e/` ディレクトリ未作成 |
