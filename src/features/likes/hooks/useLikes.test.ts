@@ -1,0 +1,55 @@
+import { act, renderHook } from "@testing-library/react";
+import { beforeEach, describe, expect, it } from "vitest";
+import { useLikes } from "./useLikes";
+
+describe("useLikes", () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it("初期状態ではいいねが空", () => {
+    const { result } = renderHook(() => useLikes());
+
+    expect(result.current.likedIds).toEqual([]);
+    expect(result.current.isLiked("1")).toBe(false);
+  });
+
+  it("toggle でいいねをつけられる", () => {
+    const { result } = renderHook(() => useLikes());
+
+    act(() => {
+      result.current.toggle("1");
+    });
+
+    expect(result.current.isLiked("1")).toBe(true);
+    expect(JSON.parse(localStorage.getItem("liked_profiles") ?? "[]")).toEqual([
+      "1",
+    ]);
+  });
+
+  it("もう一度 toggle するといいねが取り消される", () => {
+    const { result } = renderHook(() => useLikes());
+
+    act(() => {
+      result.current.toggle("1");
+    });
+    act(() => {
+      result.current.toggle("1");
+    });
+
+    expect(result.current.isLiked("1")).toBe(false);
+    expect(JSON.parse(localStorage.getItem("liked_profiles") ?? "[]")).toEqual(
+      [],
+    );
+  });
+
+  it("localStorage に保存済みのいいねを復元する", () => {
+    localStorage.setItem("liked_profiles", JSON.stringify(["2", "m1"]));
+
+    const { result } = renderHook(() => useLikes());
+
+    expect(result.current.isLiked("2")).toBe(true);
+    expect(result.current.isLiked("m1")).toBe(true);
+    expect(result.current.isLiked("1")).toBe(false);
+  });
+});
