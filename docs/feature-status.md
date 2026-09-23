@@ -84,6 +84,6 @@
 | ------------- | ------- | ------------------------- |
 | `useAuth`     | ✅ Done | `useAuth.test.ts`         |
 | `ProfileCard` | ✅ Done | `ProfileCard.test.tsx`    |
-| `useLikes`    | 📋 Todo | テストなし                |
+| `useLikes`    | ✅ Done | `useLikes.test.ts`        |
 | `useStocks`   | 📋 Todo | テストなし                |
 | E2E           | 📋 Todo | `e2e/` ディレクトリ未作成 |
