@@ -36,4 +36,17 @@ describe("ProfileCard", () => {
     const image = screen.getByRole("img", { name: "山田 花子" });
     expect(image).toHaveAttribute("src", profile.imageUrl);
   });
+
+  it("actions に渡した要素が表示される", () => {
+    render(
+      <ProfileCard
+        profile={profile}
+        actions={<button type="button">アクション</button>}
+      />,
+    );
+
+    expect(
+      screen.getByRole("button", { name: "アクション" }),
+    ).toBeInTheDocument();
+  });
 });
