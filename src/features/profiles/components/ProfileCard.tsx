@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
 import type { Profile } from "@/features/profiles/types";
 
 type ProfileCardProps = {
   profile: Profile;
+  actions?: ReactNode;
 };
 
-export function ProfileCard({ profile }: ProfileCardProps) {
+export function ProfileCard({ profile, actions }: ProfileCardProps) {
   return (
     <article className="rounded-lg border border-gray-200 p-4 shadow-sm">
       {/* biome-ignore lint/performance/noImgElement: 画像最適化は未設定のため通常の img を使用 */}
@@ -28,6 +30,7 @@ export function ProfileCard({ profile }: ProfileCardProps) {
           </li>
         ))}
       </ul>
+      {actions && <div className="mt-3 flex justify-end gap-2">{actions}</div>}
     </article>
   );
 }
